@@ -7,19 +7,27 @@
       }
     }
   },
-  "SimpleStorage.sol": {
-    "__sources__": {
-      "SimpleStorage.sol": {
-        "content": "pragma solidity ^0.5.9; \n// Imagine a big integer that the whole world could share\ncontract SimpleStorage {\n    uint storedData; // state variable\n\n    // there is no explicit constructor, but a constructor is created automatically under the hood.\n\n    function set(uint x) public {\n        storedData = x;\n    }\n\n    function get() view public returns (uint) {\n        return storedData;\n    }\n    \n    function increment (uint n) public {\n        storedData = storedData + n;\n        return;\n    }\n    \n    function decrement (uint n) public {\n        storedData = storedData - n;\n        return;\n    }\n    \n}\n\n \n\n\n",
-        "file": "SimpleStorage.sol"
-      }
-    }
-  },
   "Greeter.sol": {
     "__sources__": {
       "Greeter.sol": {
         "content": "pragma solidity ^0.5.9;\n\ncontract Greeter  {\n    string public yourName;  // data , camelCase variable notation, state variable\n    \n    /* This runs when the contract is executed */\n    constructor() public {\n        yourName = \"World\";\n    } \n    \n    function set(string memory name) public {\n        yourName = name;\n    }\n    \n    function hello() view public returns (string memory) {\n        return yourName;\n    }\n}\n",
         "file": "Greeter.sol"
+      }
+    }
+  },
+  "Minter.sol": {
+    "__sources__": {
+      "Minter.sol": {
+        "content": "pragma solidity ^0.5.9;\n\ncontract Coin {\n    // The keyword \"public\" makes those variables\n    // readable from outside.\n    address public minter;\n    mapping (address => uint) public balances;\n\n    // Events allow light clients to react on\n    // changes efficiently.\n    event Sent(address from, address to, uint amount);\n\n    // This is the constructor whose code is\n    // run only when the contract is created.\n    constructor() public{\n        minter = msg.sender;\n    }\n\n    function mint(address receiver, uint amount) public  {\n        if (msg.sender != minter) return;\n        balances[receiver] += amount;\n    }\n\n    function send(address receiver, uint amount) public {\n        if (balances[msg.sender] < amount) return;\n        balances[msg.sender] -= amount;\n        balances[receiver] += amount;\n        emit Sent(msg.sender, receiver, amount);\n    }\n}\n",
+        "file": "Minter.sol"
+      }
+    }
+  },
+  "SimpleStorage.sol": {
+    "__sources__": {
+      "SimpleStorage.sol": {
+        "content": "pragma solidity ^0.5.9; \n// Imagine a big integer that the whole world could share\ncontract SimpleStorage {\n    uint storedData; // state variable\n\n    // there is no explicit constructor, but a constructor is created automatically under the hood.\n\n    function set(uint x) public {\n        storedData = x;\n    }\n\n    function get() view public returns (uint) {\n        return storedData;\n    }\n    \n    function increment (uint n) public {\n        storedData = storedData + n;\n        return;\n    }\n    \n    function decrement (uint n) public {\n        storedData = storedData - n;\n        return;\n    }\n    \n}\n\n \n\n\n",
+        "file": "SimpleStorage.sol"
       }
     }
   }
