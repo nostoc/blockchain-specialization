@@ -7,14 +7,6 @@
       }
     }
   },
-  "Greeter.sol": {
-    "__sources__": {
-      "Greeter.sol": {
-        "content": "pragma solidity ^0.5.9;\n\ncontract Greeter  {\n    string public yourName;  // data , camelCase variable notation, state variable\n    \n    /* This runs when the contract is executed */\n    constructor() public {\n        yourName = \"World\";\n    } \n    \n    function set(string memory name) public {\n        yourName = name;\n    }\n    \n    function hello() view public returns (string memory) {\n        return yourName;\n    }\n}\n",
-        "file": "Greeter.sol"
-      }
-    }
-  },
   "Minter.sol": {
     "__sources__": {
       "Minter.sol": {
@@ -23,10 +15,18 @@
       }
     }
   },
+  "Greeter.sol": {
+    "__sources__": {
+      "Greeter.sol": {
+        "content": "pragma solidity ^0.4.0;\r\n\r\ncontract Greeter  {\r\n    string public yourName;  // data\r\n    \r\n    /* This runs when the contract is executed */\r\n   function Greeter() public {\r\n        yourName = \"World\";\r\n    } \r\n    \r\n    function set(string name)public {\r\n        yourName = name;\r\n    }\r\n    \r\n    function hello() constant public returns (string) {\r\n        return yourName;\r\n    }\r\n}\r\n",
+        "file": "Greeter.sol"
+      }
+    }
+  },
   "SimpleStorage.sol": {
     "__sources__": {
       "SimpleStorage.sol": {
-        "content": "pragma solidity ^0.5.9; \n// Imagine a big integer that the whole world could share\ncontract SimpleStorage {\n    uint storedData; // state variable\n\n    // there is no explicit constructor, but a constructor is created automatically under the hood.\n\n    function set(uint x) public {\n        storedData = x;\n    }\n\n    function get() view public returns (uint) {\n        return storedData;\n    }\n    \n    function increment (uint n) public {\n        storedData = storedData + n;\n        return;\n    }\n    \n    function decrement (uint n) public {\n        storedData = storedData - n;\n        return;\n    }\n    \n}\n\n \n\n\n",
+        "content": "pragma solidity ^0.4.0; \r\n// Imagine a big integer that the whole world could share\r\ncontract SimpleStorage {\r\n    uint storedData;\r\n\r\n    function set(uint x) public {\r\n        storedData = x;\r\n    }\r\n\r\n    function get() constant public returns (uint)  {\r\n        return storedData;\r\n    }\r\n    \r\n    function increment (uint n) public {\r\n        storedData = storedData + n;\r\n        return;\r\n    }\r\n    \r\n    function decrement (uint n) public {\r\n        storedData = storedData - n;\r\n        return;\r\n    }\r\n    \r\n}\r\n\r\n \r\n\r\n\r\n",
         "file": "SimpleStorage.sol"
       }
     }
