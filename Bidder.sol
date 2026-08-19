@@ -8,8 +8,7 @@ contract Bidder {
     uint constant minBid = 1000;
      
     function setName(string memory nm) public {
-        name = nm;
-        
+        name = nm;    
     }
     
     function setBidAmount(uint x) public {

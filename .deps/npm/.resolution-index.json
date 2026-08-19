@@ -30,5 +30,13 @@
         "file": "SimpleStorage.sol"
       }
     }
+  },
+  "Bidder.sol": {
+    "__sources__": {
+      "Bidder.sol": {
+        "content": "pragma solidity ^0.5.9; \n\ncontract Bidder {\n    \n    string public name = \"Buffalo\";\n    uint public bidAmount;\n    bool public  eligible;\n    uint constant minBid = 1000;\n     \n    function setName(string memory nm) public {\n        name = nm;    \n    }\n    \n    function setBidAmount(uint x) public {\n        bidAmount  = x;\n    }\n  \n    function determineEligibility() public {\n        if (bidAmount >= minBid ) eligible = true;\n        else eligible = false;\n    }\n}\n",
+        "file": "Bidder.sol"
+      }
+    }
   }
 }
