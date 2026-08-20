@@ -4,7 +4,7 @@ contract Coin {
     // The keyword "public" makes those variables
     // readable from outside.
     address public minter;
-    mapping (address => uint) public balances;
+    mapping (address => uint) public balances; // address is mapped to the balances
 
     // Events allow light clients to react on
     // changes efficiently.
@@ -13,11 +13,11 @@ contract Coin {
     // This is the constructor whose code is
     // run only when the contract is created.
     function Coin() public{
-        minter = msg.sender;
+        minter = msg.sender; //msg sender / person who is creating this contract is the minter
     }
 
     function mint(address receiver, uint amount) public  {
-        if (msg.sender != minter) return;
+        if (msg.sender != minter) return; // onl
         balances[receiver] += amount;
     }
 

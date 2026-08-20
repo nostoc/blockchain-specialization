@@ -1,20 +1,4 @@
 {
-  "Coin.sol": {
-    "__sources__": {
-      "Coin.sol": {
-        "content": "pragma solidity ^0.5.9;\n\ncontract Coin {\n    // The keyword \"public\" makes those variables\n    // readable from outside.\n    address public minter;\n    mapping (address => uint) public balances;\n\n    // Events allow light clients to react on\n    // changes efficiently.\n    event Sent(address from, address to, uint amount);\n\n    // This is the constructor whose code is\n    // run only when the contract is created.\n    constructor() public{\n        minter = msg.sender;\n    }\n\n    function mint(address receiver, uint amount) public  {\n        if (msg.sender != minter) return;\n        balances[receiver] += amount;\n    }\n\n    function send(address receiver, uint amount) public {\n        if (balances[msg.sender] < amount) return;\n        balances[msg.sender] -= amount;\n        balances[receiver] += amount;\n        emit Sent(msg.sender, receiver, amount);\n    }\n}\n",
-        "file": "Coin.sol"
-      }
-    }
-  },
-  "Minter.sol": {
-    "__sources__": {
-      "Minter.sol": {
-        "content": "pragma solidity ^0.5.9;\n\ncontract Coin {\n    // The keyword \"public\" makes those variables\n    // readable from outside.\n    address public minter;\n    mapping (address => uint) public balances;\n\n    // Events allow light clients to react on\n    // changes efficiently.\n    event Sent(address from, address to, uint amount);\n\n    // This is the constructor whose code is\n    // run only when the contract is created.\n    constructor() public{\n        minter = msg.sender;\n    }\n\n    function mint(address receiver, uint amount) public  {\n        if (msg.sender != minter) return;\n        balances[receiver] += amount;\n    }\n\n    function send(address receiver, uint amount) public {\n        if (balances[msg.sender] < amount) return;\n        balances[msg.sender] -= amount;\n        balances[receiver] += amount;\n        emit Sent(msg.sender, receiver, amount);\n    }\n}\n",
-        "file": "Minter.sol"
-      }
-    }
-  },
   "Greeter.sol": {
     "__sources__": {
       "Greeter.sol": {
@@ -36,6 +20,22 @@
       "Bidder.sol": {
         "content": "pragma solidity ^0.5.9; \n\ncontract Bidder {\n    \n    string public name = \"Buffalo\";\n    uint public bidAmount;\n    bool public  eligible;\n    uint constant minBid = 1000;\n     \n    function setName(string memory nm) public {\n        name = nm;    \n    }\n    \n    function setBidAmount(uint x) public {\n        bidAmount  = x;\n    }\n  \n    function determineEligibility() public {\n        if (bidAmount >= minBid ) eligible = true;\n        else eligible = false;\n    }\n}\n",
         "file": "Bidder.sol"
+      }
+    }
+  },
+  "Coin.sol": {
+    "__sources__": {
+      "Coin.sol": {
+        "content": "pragma solidity ^0.5.9;\n\ncontract Coin {\n    // The keyword \"public\" makes those variables\n    // readable from outside.\n    address public minter;\n    mapping (address => uint) public balances;\n\n    // Events allow light clients to react on\n    // changes efficiently.\n    event Sent(address from, address to, uint amount);\n\n    // This is the constructor whose code is\n    // run only when the contract is created.\n    constructor() public{\n        minter = msg.sender;\n    }\n\n    function mint(address receiver, uint amount) public  {\n        if (msg.sender != minter) return;\n        balances[receiver] += amount;\n    }\n\n    function send(address receiver, uint amount) public {\n        if (balances[msg.sender] < amount) return;\n        balances[msg.sender] -= amount;\n        balances[receiver] += amount;\n        emit Sent(msg.sender, receiver, amount);\n    }\n}\n",
+        "file": "Coin.sol"
+      }
+    }
+  },
+  "Minter.sol": {
+    "__sources__": {
+      "Minter.sol": {
+        "content": "pragma solidity ^0.4.0;\r\n\r\ncontract Coin {\r\n    // The keyword \"public\" makes those variables\r\n    // readable from outside.\r\n    address public minter;\r\n    mapping (address => uint) public balances; // address is mapped to the balances\r\n\r\n    // Events allow light clients to react on\r\n    // changes efficiently.\r\n    event Sent(address from, address to, uint amount);\r\n\r\n    // This is the constructor whose code is\r\n    // run only when the contract is created.\r\n    function Coin() public{\r\n        minter = msg.sender; //msg sender / person who is creating this contract is the minter\r\n    }\r\n\r\n    function mint(address receiver, uint amount) public  {\r\n        if (msg.sender != minter) return; // onl\r\n        balances[receiver] += amount;\r\n    }\r\n\r\n    function send(address receiver, uint amount) public {\r\n        if (balances[msg.sender] < amount) return;\r\n        balances[msg.sender] -= amount;\r\n        balances[receiver] += amount;\r\n        Sent(msg.sender, receiver, amount);\r\n    }\r\n}\r\n",
+        "file": "Minter.sol"
       }
     }
   }
