@@ -9,7 +9,7 @@ contract Ballot {
     struct Proposal {
         uint voteCount;
     }
-    enum Stage {Init,Reg, Vote, Done}
+    enum Stage {Init,Reg, Vote, Done} // enum for states
     Stage public stage = Stage.Init;
     
     address chairperson;
@@ -20,7 +20,7 @@ contract Ballot {
     uint startTime;   
 
     /// Create a new ballot with $(_numProposals) different proposals.
-    function Ballot(uint8 _numProposals) public  {
+    constructor(uint8 _numProposals) public  {
         chairperson = msg.sender;
         voters[chairperson].weight = 2; // weight is 2 for testing purposes
         proposals.length = _numProposals;
